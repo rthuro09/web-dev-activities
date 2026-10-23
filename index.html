@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jujutsu Kaisen — Cursed Archive</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-particles" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-mark">呪</span>
+    <span class="brand-text">JJK / ARCHIVE</span>
+  </div>
+  <nav class="main-nav">
+    <a href="#archive">Sorcerers</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#inspector">Data Core</a>
+  </nav>
+</header>
+
+<!-- ===== UPPER SECTION: Muted MP4 Background ===== -->
+<section class="hero" id="home">
+  <!-- 
+    REPLACE 'assets/hero-background.mp4' WITH YOUR ACTUAL VIDEO FILE PATH.
+    The video is set to autoplay, loop, and is strictly muted via HTML + JS.
+  -->
+  <video
+    class="hero-video"
+    id="heroVideo"
+    src="bg.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster="" 
+    aria-hidden="true"></video>
+  
+  <div class="hero-overlay" aria-hidden="true"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">死滅回游 • Culling Game</div>
+    <h1 class="hero-title">
+      <span class="title-jp">呪術廻戦</span>
+      <span class="title-en">Character Archive</span>
+    </h1>
+    <p class="hero-description">Every sorcerer, curse, and player trapped in the colonies. One structured dataset.</p>
+    <div class="hero-meta" id="heroMeta">Initializing Barrier…</div>
+  </div>
+</section>
+
+<main>
+  <section class="section" id="archive">
+    <div class="section-header">
+      <h2 class="section-title">Swimmers & Curses</h2>
+      <p class="section-subtitle">Filter by era, grade, or search by name and technique.</p>
+    </div>
+    
+    <div class="toolbar">
+      <div class="search-box">
+        <input type="search" id="search" placeholder="Search name or technique…" autocomplete="off">
+      </div>
+      <div class="filter-group">
+        <select id="eraFilter"><option value="all">All Eras</option></select>
+        <select id="gradeFilter"><option value="all">All Grades</option></select>
+      </div>
+      <span id="resultCount" class="result-count">0 records</span>
+    </div>
+
+    <div class="card-grid" id="grid">
+      <!-- Cards injected via JS -->
+    </div>
+  </section>
+
+  <section class="section" id="timeline">
+    <div class="section-header">
+      <h2 class="section-title">Timeline of Decay</h2>
+      <p class="section-subtitle">Key events leading to the end of the Golden Age.</p>
+    </div>
+    <div id="timelineList"></div>
+  </section>
+
+  <section class="section" id="data-view">
+    <div class="section-header">
+      <h2 class="section-title">Raw Data Core</h2>
+      <p class="section-subtitle">Inspect the underlying JSON structure of the selected entity.</p>
+    </div>
+    <div class="inspector-controls">
+      <button class="btn" id="copyBtn">Copy JSON</button>
+    </div>
+    <pre id="inspector">// Select a character above to inspect data.</pre>
+  </section>
+</main>
+
+<footer class="site-footer">
+  Fan-made educational archive. Characters belong to Gege Akutami / Shueisha / MAPPA.
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
