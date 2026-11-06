@@ -1,5 +1,5 @@
 export const API_CONFIG = {
-  baseUrl: "dragonball-api.com",
+  baseUrl: "https://dragonball-api.com",
   endpoint: "/api/characters",
   searchParam: "name",
   pageParam: "page",
