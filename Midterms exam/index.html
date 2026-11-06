@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101820">
+  <meta name="description" content="Search the Dragon Ball character database and browse a generated ID archive.">
+  <title>ARCHIVE Z — Dragon Ball Character Database</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark site-nav sticky-top">
+    <div class="container">
+      <a class="navbar-brand brand-mark" href="#home" aria-label="Archive Z home"><span class="brand-orb">Z</span> ARCHIVE<span class="brand-z">Z</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavigation" aria-controls="mainNavigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavigation">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#database">Character Database</a></li>
+          <li class="nav-item"><a class="nav-link" href="#id-archive">ID Archive</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero-section" id="home">
+      <div class="hero-orbit orbit-one"></div>
+      <div class="hero-orbit orbit-two"></div>
+      <div class="container hero-content">
+        
+        <h1>ARCHIVE <span>Z</span></h1>
+        <p class="hero-copy">A universe of fighters. One archive to explore them all.</p>
+        <p class="hero-tagline">DISCOVER. EXPLORE. POWER UP.</p>
+        <form class="search-panel" id="searchForm" role="search">
+          <label class="visually-hidden" for="characterSearch">Search Dragon Ball characters</label>
+          <span class="search-symbol" aria-hidden="true">⌕</span>
+          <input id="characterSearch" class="form-control" type="search" placeholder="Search Goku, Vegeta, Frieza..." autocomplete="off">
+          <button class="btn btn-search" type="submit">Search <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="hero-note">Search character names or browse the full database below.</p>
+      </div>
+      <div class="hero-coordinate" aria-hidden="true">UNIVERSE 07&nbsp; / &nbsp;EARTH</div>
+    </section>
+
+    <section class="content-section database-section" id="database">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow section-eyebrow">01 / THE DATABASE</p>
+            <h2>Character <span>Records</span></h2>
+          </div>
+          <p class="section-aside" id="resultSummary" aria-live="polite">Connect to the archive to load records.</p>
+        </div>
+        <p class="api-language-note">Character descriptions are omitted because the API only provides them in Spanish.</p>
+        <div class="loading-wrap d-none" id="loadingState" role="status" aria-live="polite">
+          <div class="loading-label"><span class="loading-pulse"></span> Searching the Dragon Ball Database...</div>
+          <div class="progress loading-track" aria-label="Loading">
+            <div class="progress-bar loading-bar"></div>
+          </div>
+        </div>
+        <div class="alert archive-alert d-none" id="statusMessage" role="status"></div>
+        <div class="character-grid" id="characterGrid" aria-live="polite"></div>
+        <nav class="pagination-wrap" aria-label="Character results pages">
+          <ul class="pagination justify-content-center" id="characterPagination"></ul>
+        </nav>
+      </div>
+    </section>
+
+    <section class="content-section id-section" id="id-archive">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow section-eyebrow">02 / GENERATED DEMO</p>
+            <h2>ID <span>Archive</span></h2>
+          </div>
+         
+        </div>
+        <div class="id-panel">
+          <div class="id-panel-top">
+            <p class="mb-0">ARCHIVE INDEX <span id="idPageLabel">PAGE 1</span></p>
+            <p class="mb-0"><span id="idRangeLabel">1–50</span> 
+          </div>
+          <div class="id-grid" id="idGrid"></div>
+          <nav class="pagination-wrap id-pagination" aria-label="ID archive pages">
+            <ul class="pagination justify-content-center" id="idPagination"></ul>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="container about-inner">
+        <div>
+          <p class="eyebrow section-eyebrow">ABOUT THIS PROJECT</p>
+          <h2>A fan-made <span>field guide.</span></h2>
+        </div>
+        <div class="about-copy">
+          <p>ARCHIVE Z is a responsive learning project exploring async JavaScript, the Fetch API, JSON, and Bootstrap pagination.</p>
+          <p>Character records are retrieved live from the <a href="https://web.dragonball-api.com/" target="_blank" rel="noreferrer">Dragon Ball API</a>. Data availability depends on that service. Dragon Ball and its characters belong to their respective rights holders.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-sm-row justify-content-between gap-2">
+      <span class="footer-brand">ARCHIVE Z <span>·</span> CHARACTER DATABASE</span>
+      <span>Built to explore a universe of stories.</span>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
