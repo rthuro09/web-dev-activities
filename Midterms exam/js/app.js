@@ -85,7 +85,7 @@ function createCharacterCard(character) {
   name.textContent = character.name;
   const recordId = document.createElement("span");
   recordId.className = "record-id";
-  recordId.textContent = `#${character.id ?? "-"}`;
+  recordId.textContent = `#${character.id ?? "—"}`;
   header.append(name, recordId);
 
   const fields = document.createElement("div");
@@ -98,14 +98,11 @@ function createCharacterCard(character) {
     createField("Max power", character.maxKi)
   ].filter(Boolean).forEach((field) => fields.append(field));
 
-  // Fixed logic: Check if the href attribute was actually set, rather than the property 
-  // (which defaults to the current page URL for <a> tags and is always truthy)
-  const hasHref = imageLink.hasAttribute("href");
-  const viewLink = hasHref
+  const viewLink = imageLink.href
     ? Object.assign(document.createElement("a"), {
         className: "view-image-link",
         href: imageLink.href,
-        textContent: "View image ->"
+        textContent: "View image →"
       })
     : null;
 
@@ -162,8 +159,8 @@ function renderCharacters() {
     resultSummary.textContent = "No character records";
   } else {
     const recordCount = `${characters.length} result${characters.length === 1 ? "" : "s"}`;
-    const searchLabel = activeSearchTerm ? ` for "${activeSearchTerm}"` : "";
-    resultSummary.textContent = `${recordCount}${searchLabel} - page ${characterPage} of ${totalPages}`;
+    const searchLabel = activeSearchTerm ? ` for “${activeSearchTerm}”` : "";
+    resultSummary.textContent = `${recordCount}${searchLabel} · page ${characterPage} of ${totalPages}`;
   }
   renderCharacterPagination(totalPages);
 }
@@ -184,11 +181,7 @@ function changeCharacterPage(page) {
 
 async function runSearch(searchTerm = "", page = 1) {
   activeSearchTerm = searchTerm.trim();
-  
-  // Replaced optional chaining (?.) with standard if-check for broader compatibility
-  if (requestController) {
-    requestController.abort();
-  }
+  requestController?.abort();
   requestController = new AbortController();
   const currentRequest = ++requestSequence;
   setLoading(true);
@@ -208,7 +201,7 @@ async function runSearch(searchTerm = "", page = 1) {
     renderCharacters();
     if (!characters.length) {
       const message = activeSearchTerm
-        ? `No characters found for "${activeSearchTerm}". Try another name.`
+        ? `No characters found for “${activeSearchTerm}”. Try another name.`
         : "The character database returned no records. Please try again later.";
       setStatus(message, "warning");
     }
@@ -245,7 +238,7 @@ function renderIdArchive() {
   }
 
   document.querySelector("#idPageLabel").textContent = `PAGE ${idPage}`;
-  document.querySelector("#idRangeLabel").textContent = `${firstId}-${lastId}`;
+  document.querySelector("#idRangeLabel").textContent = `${firstId}–${lastId}`;
   idPagination.replaceChildren();
   idPagination.append(createPageItem("Previous", () => changeIdPage(idPage - 1), idPage === 1));
   const start = Math.max(1, Math.min(idPage - 2, totalPages - 4));
