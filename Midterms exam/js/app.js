@@ -1,4 +1,4 @@
-import { fetchCharacters } from "/api.js";
+import { fetchCharacters } from "../api.js";
 
 const RESULTS_PER_PAGE = 8;
 const IDS_PER_PAGE = 50;
